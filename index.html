@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Congrats dr. Saskia!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@700;900&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <style>
+    :root {
+      --main-blue: #2196f3;
+      --main-white: #fff;
+      --accent: #e3f2fd;
+      --font-header: 'Pacifico', cursive;
+      --font-bold: 'Montserrat', Arial, sans-serif;
+      --font-body: 'Poppins', sans-serif;
+    }
+    html, body {
+      margin: 0; padding: 0;
+      min-height: 100%;
+      width: 100vw;
+      box-sizing: border-box;
+      background: var(--main-white);
+      font-family: var(--font-body);
+      color: #222;
+      overflow-x: hidden;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(to bottom, var(--main-white) 60%, var(--accent) 100%);
+    }
+    .hidden { display: none !important; }
+    .centered {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 3.5vh 0 3.5vh 0;
+      text-align: center;
+      min-height: unset;
+    }
+    .landing-title {
+      font-family: var(--font-header);
+      font-size: 2.5rem;
+      color: var(--main-blue);
+      margin-bottom: 0.4rem;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4em;
+      flex-wrap: wrap;
+      text-shadow: 0 2px 24px #2196f322;
+    }
+    .subtitle {
+      font-family: var(--font-bold);
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: #e91e63;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.6px;
+      line-height: 1.15;
+      text-shadow: 0 1px 10px #fff4;
+    }
+    .landing-quote,
+    .landing-verse {
+      font-size: 1.13rem;
+      color: #1976d2;
+      font-family: var(--font-body);
+      font-style: italic;
+      font-weight: 500;
+      line-height: 1.38;
+      padding: 0 1.2rem;
+      margin-bottom: 0.7rem;
+    }
+    .landing-verse {
+      color: #0d47a1;
+      margin-bottom: 1.5rem;
+      margin-top: 0.5rem;
+    }
+    .tofrom {
+      background: #f5faff;
+      border-radius: 1.5rem;
+      box-shadow: 0 2px 16px #2196f311;
+      padding: 1.2rem 2.2rem;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+      color: #1976d2;
+    }
+    .action-btn {
+      background: var(--main-blue);
+      color: #fff;
+      border: none;
+      border-radius: 1.5rem;
+      padding: 1rem 2.2rem;
+      font-size: 1.2rem;
+      font-family: var(--font-bold);
+      cursor: pointer;
+      box-shadow: 0 2px 12px #2196f366;
+      margin-top: 2rem;
+      position: relative;
+      outline: none;
+      font-weight: 700;
+      transition: background 0.3s, box-shadow 0.15s, transform 0.15s;
+      animation: bubble-pop 1.2s infinite cubic-bezier(.6,.02,.53,.99);
+    }
+    @keyframes bubble-pop {
+      0% {
+        box-shadow: 0 2px 12px #2196f399, 0 0 0 0 #2196f355;
+        transform: scale(1);
+      }
+      50% {
+        box-shadow: 0 6px 30px #2196f355, 0 0 0 18px #2196f308;
+        transform: scale(1.08);
+      }
+      100% {
+        box-shadow: 0 2px 12px #2196f399, 0 0 0 0 #2196f355;
+        transform: scale(1);
+      }
+    }
+    .action-btn:active {
+      transform: scale(0.96);
+    }
+    .decor-doctor {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .photo-container {
+      margin-top: 1.3rem;
+      margin-bottom: 2.2rem;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    .photo-container img {
+      max-width: 320px;
+      width: 98vw;
+      border-radius: 1.2rem;
+      box-shadow: 0 2px 16px #2196f322;
+      border: 3px solid #e3f2fd;
+      background: #f5faff;
+      object-fit: cover;
+    }
+    .message-page {
+      padding: 2rem 0;
+      min-height: 100vh;
+      background: linear-gradient(to bottom, var(--accent) 60%, #e0f7fa 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+    }
+    .message-content-box {
+      background: #ffffffee;
+      border-radius: 1.3rem;
+      box-shadow: 0 2px 14px #2196f322;
+      padding: 2rem 1.3rem 1.5rem 1.3rem;
+      max-width: 600px;
+      width: 96vw;
+      margin: 2rem 0 2rem 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .message-header {
+      font-family: var(--font-header);
+      font-size: 2.2rem;
+      color: var(--main-blue);
+      margin-bottom: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 24px #2196f322;
+    }
+    .message-body {
+      font-size: 1.07rem;
+      color: #1976d2;
+      line-height: 1.57;
+      min-height: 180px;
+      min-width: 0;
+      overflow-wrap: break-word;
+      word-break: break-word;
+      width: 100%;
+      text-align: left;
+    }
+    .single-photo-gallery {
+      margin: 1.3rem 0 2.2rem 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.3rem;
+    }
+    .single-photo-gallery img {
+      max-width: 320px;
+      width: 98vw;
+      border-radius: 1.2rem;
+      box-shadow: 0 2px 16px #2196f322;
+      border: 3px solid #e3f2fd;
+      background: #f5faff;
+      object-fit: contain;
+      display: block;
+      transition: opacity 0.6s;
+      opacity: 1;
+    }
+    #confetti-canvas {
+      position: fixed;
+      pointer-events: none;
+      width: 100vw; height: 100vh;
+      top: 0; left: 0;
+      z-index: 999;
+    }
+    @media (max-width: 700px) {
+      .message-content-box { padding: 1.3rem 0.5rem 1.1rem 0.5rem; }
+      .message-header { font-size: 1.5rem; }
+      .single-photo-gallery img { max-width: 95vw; }
+      .landing-title { font-size: 1.2rem; }
+      .subtitle { font-size: 1rem; }
+      .landing-quote, .landing-verse { font-size: 1rem; }
+      .decor-doctor { font-size: 1.3rem; }
+      .tofrom { font-size: 0.95rem; padding: 1rem 1rem;}
+      .action-btn { font-size: 0.98em; }
+    }
+    @media (max-width: 600px) {
+      .landing-title { font-size: 1.05rem; }
+      .subtitle { font-size: 0.9rem; }
+      .landing-quote, .landing-verse { font-size: 0.96rem; }
+      .message-header { font-size: 1.09rem; }
+      .message-content-box { padding: 1.13rem 0.2rem 0.9rem 0.2rem; }
+      .decor-doctor { font-size: 1.05rem; }
+      .action-btn { font-size: 0.95em; }
+      .photo-container img { max-width: 95vw; }
+      .single-photo-gallery img { max-width: 95vw; }
+      .tofrom { font-size: 0.85rem; padding: 0.7rem 0.6rem;}
+    }
+  </style>
+</head>
+<body>
+  <canvas id="confetti-canvas"></canvas>
+  <!-- Page 1: Landing -->
+  <section id="landing-page" class="centered">
+    <div class="decor-doctor">🩺💙</div>
+    <div class="landing-title">
+      Happy Sumpah Dokter, My Love <span style="font-size:1.2em;line-height:1;">❤️</span>
+    </div>
+    <div class="subtitle">Congratulations!</div>
+    <div class="landing-quote">
+      You are exactly who this world needs more of, Kia.<br>
+      Beautiful soul who brings love to around you.
+    </div>
+    <div class="tofrom">
+      <div><b>To:</b> dr. Saskia Amadea</div>
+      <div><b>From:</b> Jayadi Halim, S.Kom., M.Kom.</div>
+    </div>
+    <div class="landing-verse">
+      "She is clothed with strength and dignity; she can laugh at the days to come." - Proverbs 31:25
+    </div>
+    <button class="action-btn" id="to-message-btn">
+      A Little Appreciation Message for Kia
+    </button>
+    <div class="photo-container">
+      <img src="https://i.imgur.com/qgkoPbX.jpeg" alt="Kia Photo">
+    </div>
+  </section>
+
+  <!-- Page 2: Message -->
+  <section id="message-page" class="message-page hidden">
+    <div class="message-content-box">
+      <div class="message-header" id="msg-header">Dear dr. Kia,</div>
+      <div class="message-body" id="typed-message"></div>
+    </div>
+    <div class="single-photo-gallery">
+      <img id="gallery-photo"
+        src="https://i.imgur.com/1Zj8Ir3.jpeg"
+        alt="Gallery"
+        style="opacity:1;"
+      >
+    </div>
+  </section>
+  <script>
+    // Page navigation
+    const toMessageBtn = document.getElementById('to-message-btn');
+    const landingPage = document.getElementById('landing-page');
+    const messagePage = document.getElementById('message-page');
+    const confettiCanvas = document.getElementById('confetti-canvas');
+    const msgBody = document.getElementById('typed-message');
+
+    toMessageBtn.addEventListener('click', () => {
+      landingPage.classList.add('hidden');
+      messagePage.classList.remove('hidden');
+      setTimeout(() => window.scrollTo({top: 0}), 1);
+    });
+
+    // Show the full message immediately (no animation)
+    const fullMessage = `
+First of all — <b>HAPPY SUMPAH DOKTER!! 🎉</b><br>
+I’m seriously so, so proud of you. You made it, Kia! <b>8 August 2025</b>, mark this day because it’s the day the world officially gets a new amazing & gorgeous doctor: <b>dr. Saskia Amadea</b>.<br><br>
+Since our first message back then on March 1st, I’ve watched you go through everything. The stress, the breakdowns, the study marathons and more. From sushi in Bandung to martabak in Kelapa Gading, and even the picture of you in doctor’s outfit that I drew. I’ve always just wanted to support you in any way I can. You deserve all the effort, all the prayers, and all the love.<br><br>
+Now seeing you finally take your Sumpah Dokter, it hits different. Honestly, I could cry while writing this (but let’s pretend I didn’t, even though it happened already HAHA). I’ve seen how hard you worked for this, and knowing you got here makes me super emotional in the best way I feel.<br><br>
+I really believe this is just the beginning for you. Internship next, the more experiences. I can already picture you walking the hospital halls, healing people with that sharp mind and warm heart of yours. Whether it’s Semarang, Bandung, Jakarta, or anywhere else I know you’ll shine and who knows? Maybe dr. Saskia will be known all across Indonesia or even globally someday. But in my heart, you're already the best doctor I know and yes, the one who already stole my heart too HAHA 😅<br><br>
+I hope you get your dream placement in Semarang for your internship… but if I get to be a little selfish, Jakarta or Tangerang would be really amazing (so I get to see you more often for sure 😜). But wherever you go, I’ll always be rooting for you from near or far. God has amazing plans for you, and I’ll always believe that.<br><br>
+So once again, <b>Proficiat!</b> You’ve earned every bit of this moment.<br>
+And no matter what happens next, I’ll always be your <b>#1 Supporter, Believer & Fans since day one</b>, and for as long as life allows.<br><br>
+Last but not least, I know I probably shouldn’t say this… but I think this is the perfect moment to let it out.<br>
+<b>“I love you, dr. Saskia Amadea”</b><br><br>
+<i>P.S. Please don’t forget our celebration in Jakarta before September so we can celebrate your Sumpah Dokter together properly, with laughter, fun and with all my pride and feelings.</i><br><br>
+<b>JayWalk</b><br>
+<span style="font-size:0.95em; color:#0d47a1;">#1 Believer & Fans Kia</span>
+    `;
+    msgBody.innerHTML = fullMessage;
+
+    // Confetti rain everywhere
+    function confettiRainLoop() {
+      confetti({
+        particleCount: 2,
+        angle: 90,
+        startVelocity: 40,
+        spread: 85,
+        origin: { x: Math.random(), y: -0.08 },
+        colors: ['#2196f3', '#1976d2', '#ffffff', '#bbdefb', '#82b1ff', '#f06292', '#ffd740'],
+        shapes: ['circle', 'square'],
+        scalar: 1.1,
+        ticks: 280
+      });
+      requestAnimationFrame(confettiRainLoop);
+    }
+    confettiRainLoop();
+
+    // Gallery Slideshow
+    const galleryPhotos = [
+      "https://i.imgur.com/1Zj8Ir3.jpeg",
+      "https://i.imgur.com/eacSq75.jpeg",
+      "https://i.imgur.com/Wq9WIZU.jpeg",
+      "https://i.imgur.com/udtAW0p.jpeg",
+      "https://i.imgur.com/lMgEuJb.jpeg",
+      "https://i.imgur.com/A4JLNPH.jpeg"
+    ];
+    let galleryIndex = 0;
+    const galleryImg = document.getElementById('gallery-photo');
+    function showNextGalleryPhoto() {
+      galleryImg.style.opacity = 0;
+      setTimeout(() => {
+        galleryIndex = (galleryIndex + 1) % galleryPhotos.length;
+        galleryImg.src = galleryPhotos[galleryIndex];
+        galleryImg.style.opacity = 1;
+      }, 600);
+    }
+    // Only start slideshow once messagePage is shown
+    let galleryInterval = null;
+    toMessageBtn.addEventListener('click', () => {
+      galleryIndex = 0;
+      galleryImg.src = galleryPhotos[galleryIndex];
+      if (galleryInterval) clearInterval(galleryInterval);
+      galleryInterval = setInterval(showNextGalleryPhoto, 2000);
+    });
+  </script>
+</body>
+</html>
