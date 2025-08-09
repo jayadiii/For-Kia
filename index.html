@@ -174,6 +174,28 @@
       letter-spacing: 1px;
       text-shadow: 0 2px 24px #2196f322;
     }
+    .video-container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0.8em auto 1em auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 14px #2196f322;
+      background: #fff;
+      text-align: center;
+    }
+    .video-container video {
+      width: 100%;
+      height: 230px;
+      background: #000;
+      border-radius: 12px;
+      display: block;
+    }
+    @media (max-width: 600px) {
+      .video-container video {
+        height: 170px;
+      }
+    }
     .message-body {
       font-size: 1.07rem;
       color: #1976d2;
@@ -269,6 +291,14 @@
   <section id="message-page" class="message-page hidden">
     <div class="message-content-box">
       <div class="message-header" id="msg-header">Dear dr. Kia,</div>
+      <!-- Video Section Start -->
+      <div class="video-container">
+        <video id="kiaVideo" width="100%" controls>
+          <source src="https://i.imgur.com/vOZJWsQ.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <!-- Video Section End -->
       <div class="message-body" id="typed-message"></div>
     </div>
     <div class="single-photo-gallery">
@@ -342,7 +372,7 @@ Last but not least, I know I probably shouldn’t say this… but I think this i
       "https://i.imgur.com/udtAW0p.jpeg",
       "https://i.imgur.com/lMgEuJb.jpeg",
       "https://i.imgur.com/A4JLNPH.jpeg",
-      "https://i.imgur.com/tuNAaHA.jpeg",
+      "https://i.imgur.com/iXtn5hd.jpeg",
       "https://i.imgur.com/EXWUTjB.jpeg"
     ];
     let galleryIndex = 0;
